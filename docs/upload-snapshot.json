@@ -1,0 +1,64 @@
+{
+  "skill": "topic-material-research",
+  "snapshot_date": "2026-10-31T12:39:44.075713+00:00",
+  "source_kind": "installed local skill",
+  "included_source_files": [
+    {
+      "path": "SKILL.md",
+      "sha256": "eefad00a0cc6f4d3b66935ee405d934ab787190db12a756a1d6329eda1abead8",
+      "bytes": 10274
+    },
+    {
+      "path": "agents/openai.yaml",
+      "sha256": "21f1d4f3cd40e4a3d9966c87e4dddabee2bdf1f4a535f843e7dba5d67765b657",
+      "bytes": 323
+    },
+    {
+      "path": "references/delivery.md",
+      "sha256": "c4d9bf17208e42793ed79b6dca35c3c180919b88590a34c3278c28fb645660c9",
+      "bytes": 6010
+    },
+    {
+      "path": "references/methods.md",
+      "sha256": "c3dc80cc93c2eb0fec9a7d0ba1a1be64bb3ae4786bf77858317eed1956611e26",
+      "bytes": 8215
+    },
+    {
+      "path": "references/providers.md",
+      "sha256": "6308adba33519d3c30b9da9ec55287ada58831eb2002eefc314dc9d12a17b698",
+      "bytes": 6589
+    },
+    {
+      "path": "references/wiki-snapshots.json",
+      "sha256": "2278c1d662383a8bc875e7fc4ac6f348594d439582ba140ed23b0009cff1f2de",
+      "bytes": 55564
+    },
+    {
+      "path": "scripts/_common.py",
+      "sha256": "f5e011913bf6486bb6014666e89b6f868caf793966747b6c17290405f37e6e2e",
+      "bytes": 13103
+    },
+    {
+      "path": "scripts/bundle.py",
+      "sha256": "a529645f3e048feef7688f558c421114fb05a0e28262a3db44bc53c62db3faad",
+      "bytes": 7452
+    },
+    {
+      "path": "scripts/collect.py",
+      "sha256": "f0b6ba90e458d73b4a549316168548abf99068199d42c46b0c639c6003e24284",
+      "bytes": 23252
+    },
+    {
+      "path": "scripts/lookup.py",
+      "sha256": "70d6d7d699c4cdbcf0962f6cd5d745bfbd712937a87caa75a1eeaadd202ea560",
+      "bytes": 1684
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "sha256": "5ef14acaa7375175a54172de3f38e8a338bd492603371fadf2aa25dee6cea9f9",
+      "bytes": 24129
+    }
+  ],
+  "excluded_source_files": [],
+  "verification_scope": "Byte-for-byte copy of included source files; no claim of live provider or writing quality validation."
+}

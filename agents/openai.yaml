@@ -1,0 +1,4 @@
+interface:
+  display_name: "素材调研搭档"
+  short_description: "结合创作 Wiki 拆解选题缺口，搜索并整理保留细节与出处的素材包"
+  default_prompt: "用 $topic-material-research 围绕这个选题收集素材，先明确值得研究的角度和缺口，再交付可追溯的详细素材包。"
