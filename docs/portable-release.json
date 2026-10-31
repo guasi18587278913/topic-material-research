@@ -1,0 +1,96 @@
+{
+  "skill": "topic-material-research",
+  "date": "2026-10-31",
+  "baseline_commit": "2e937cff03bf8fd0f19da6d1e2f1d9b9472044aa",
+  "mode": "bundled-local-default-optional-wiki",
+  "validation": {
+    "format_exit": 0,
+    "offline_commands": [
+      {
+        "command": "python3 -B scripts/lookup.py --read concepts/body_expression#16",
+        "exit_code": 0
+      },
+      {
+        "command": "python3 -B scripts/collect.py operations",
+        "exit_code": 0
+      }
+    ],
+    "unit_tests_passed": 56,
+    "unit_tests_failed": 0,
+    "independent_review": "passed",
+    "synthetic_trial": "completed",
+    "trial_summary": "交付证据缺口和补料计划，保留缺少基线、取书总量以及两项改动同时发生的限制；未执行网络采集或现场实验。",
+    "external_services_executed": false
+  },
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "b4260ef4e7955a09c6864754fa9b29f37d91f8fab551580224062574806effc5"
+    },
+    {
+      "path": "README.md",
+      "sha256": "c7fc6856817018010e64e97dd75a41d18324e64ec3943ae0ac6b37c9b2f09848"
+    },
+    {
+      "path": "SKILL.md",
+      "sha256": "dd0d694934677b63bb7ce096b46b660e0cfe401450ccfe6d6c6e0935d8f6d6d8"
+    },
+    {
+      "path": "agents/openai.yaml",
+      "sha256": "21f1d4f3cd40e4a3d9966c87e4dddabee2bdf1f4a535f843e7dba5d67765b657"
+    },
+    {
+      "path": "docs/portability-validation.md",
+      "sha256": "188e86f9861539e63097392dffa60b6249920dea311afdd1add2325d2123cb20"
+    },
+    {
+      "path": "docs/upload-snapshot.json",
+      "sha256": "fc3df0a249020d63406b322135bc205632da96a685622ab885e43aa7d8449cc6"
+    },
+    {
+      "path": "examples/first-run-result.md",
+      "sha256": "e830d7423a94bac6856550443396bc5d8c50db221b8ec4b4d1d55e1098416ac0"
+    },
+    {
+      "path": "examples/first-run.md",
+      "sha256": "182dab3e9e0cc943bd9769e6820b76b29d93f3adcf88ffaf058f77c74993abfe"
+    },
+    {
+      "path": "references/delivery.md",
+      "sha256": "c4d9bf17208e42793ed79b6dca35c3c180919b88590a34c3278c28fb645660c9"
+    },
+    {
+      "path": "references/methods.md",
+      "sha256": "47363c4e9a3a75cd44cd07653736b9394ef6919a91de719b79fe0d6d9a400c33"
+    },
+    {
+      "path": "references/providers.md",
+      "sha256": "3b038000e681a8f5318f3da90e92f0be2f4a70716d2ee933fefda40d061ef8a6"
+    },
+    {
+      "path": "references/wiki-snapshots.json",
+      "sha256": "2278c1d662383a8bc875e7fc4ac6f348594d439582ba140ed23b0009cff1f2de"
+    },
+    {
+      "path": "scripts/_common.py",
+      "sha256": "f5e011913bf6486bb6014666e89b6f868caf793966747b6c17290405f37e6e2e"
+    },
+    {
+      "path": "scripts/bundle.py",
+      "sha256": "a529645f3e048feef7688f558c421114fb05a0e28262a3db44bc53c62db3faad"
+    },
+    {
+      "path": "scripts/collect.py",
+      "sha256": "81e9dc3c8277f515fc20f824922ff02eb21f86de62938f24a90f7113032777c7"
+    },
+    {
+      "path": "scripts/lookup.py",
+      "sha256": "c046cf402d691c45748bdc0c22f96bc9c242b0648cc30e7bcaeacea294f4c935"
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "sha256": "25c41333bf60cd5b695de26963547e36763106cb11a77f5138a00eb7b07d09b9"
+    }
+  ],
+  "manifest_scope": "All distributed files except this manifest; Git commit identifies the complete version."
+}

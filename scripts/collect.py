@@ -126,14 +126,6 @@ class Client:
             run = subprocess.run(['/usr/bin/security', 'find-generic-password', '-s', service, '-a', account, '-w'], capture_output=True, text=True)
             if run.returncode == 0:
                 key = run.stdout.strip()
-        if not key and provider == 'tikhub':
-            for rel in ['projects/GitHub/找对标/.env.local', 'projects/GitHub/title-helper/.env.local', 'projects/GitHub/美食博主工作台/.env.local']:
-                path = Path.home() / rel
-                if not path.is_file():
-                    continue
-                match = re.search(r'(?im)^\s*(?:export\s+)?[\"\']?(?:NEXT_PUBLIC_)?TIKHUB[A-Z_]*(?:KEY|TOKEN)[\"\']?\s*[:=]\s*[\"\']?([A-Za-z0-9+/=._-]{20,})', path.read_text())
-                if match:
-                    key = match.group(1); break
         if not key:
             raise ResearchError(provider + ' credential is unavailable; no data request sent')
         self.keys[provider] = key; self.secrets.append(key)

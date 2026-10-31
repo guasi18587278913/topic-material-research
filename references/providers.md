@@ -1,6 +1,6 @@
 # 接口、权限与费用
 
-本机已核查入口（2026-10-24）：AgentKey MCP 在 `~/.claude.json` 的 `mcpServers.agentkey`；GetXAPI 可由环境变量或 macOS Keychain 读取；TikHub 有环境变量、Keychain 及既有项目配置来源。没有凭据时说明缺项，不要求用户把密钥贴进聊天，不自动安装连接或修改配置。
+公开版可选接口：AgentKey 使用显式环境变量或用户自己已有的 `~/.claude.json` 中 `mcpServers.agentkey`；GetXAPI、TikHub 使用环境变量或 macOS Keychain。默认不会为普通素材整理加载这些账号，也不会查找作者的私人项目配置。没有凭据时说明缺项，不要求用户把密钥贴进聊天，不自动安装连接或修改配置。
 
 ## 按材料选择能力
 
@@ -43,10 +43,10 @@ GetXAPI 核价读对应官方文档；TikHub 用 `/api/v1/tikhub/user/get_endpoi
 ### 凭据顺序
 
 - GetXAPI：`GETXAPI_KEY` → Keychain 服务 `GetXAPI`、账号 `GETXAPI_KEY`。
-- TikHub：`TIKHUB_API_KEY` / `TIKHUB_KEY` / `TIKHUB_TOKEN` → Keychain 服务 `TikHub`、账号 `TIKHUB_API_KEY` → 既有三个项目 `.env.local` 中的 TikHub 字段（找对标、title-helper、美食博主工作台）。只读取指定字段，不输出文件。
+- TikHub：`TIKHUB_API_KEY` / `TIKHUB_KEY` / `TIKHUB_TOKEN` → Keychain 服务 `TikHub`、账号 `TIKHUB_API_KEY`。没有配置就报告缺项，不扫描其他项目文件。
 - AgentKey：`AGENTKEY_MCP_URL` 和可选 `AGENTKEY_API_KEY` → `~/.claude.json` 的已有 `agentkey` 配置。只接受 `api.agentkey.app` HTTPS，不跟随重定向，不输出配置 header 或 URL 凭据。
 
-这是本机接入约定，不复制密钥进 skill。其他机器用环境变量或已有安全存储，不后台扫磁盘找凭据。
+使用者配置自己的环境变量或已有安全存储，不复制作者密钥或账号，不后台扫磁盘找凭据。仅在明确执行该供应商功能且已授权时读取其配置。
 
 ### 执行边界
 

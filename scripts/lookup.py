@@ -17,7 +17,7 @@ def main():
     if args.read:
         page = next((p for p in pages if p['requested_slug'] == args.read), None)
         if page is None:
-            parser.exit(1, 'Not in the selected snapshot. Retrieve this page from Wiki; do not infer its method from the title.\n')
+            parser.exit(1, 'Not bundled. Choose a complete local method, ask for the source text, or use an explicitly configured Wiki. Do not infer the method from its title.\n')
         print('Dated snapshot:', page['retrieved_at'], '|', page['requested_slug'])
         print(page['content'])
         return

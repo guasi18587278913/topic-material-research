@@ -426,5 +426,13 @@ class BundleTests(unittest.TestCase):
         self.assertTrue(result['ok']); self.assertTrue(any('Same original' in w for w in result['warnings']))
 
 
+class PortableCredentialContracts(unittest.TestCase):
+    def test_missing_tikhub_key_never_reads_other_projects(self):
+        with patch.dict(os.environ, {}, clear=True), patch('collect.sys.platform', 'linux'), \
+             patch('collect.Path.home', side_effect=AssertionError('unexpected home scan')):
+            with self.assertRaisesRegex(ResearchError, 'credential is unavailable'):
+                Client().key('tikhub')
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -14,3 +14,7 @@ tasks/
 output/
 outputs/
 *.log
+
+# Keep personal source libraries outside this repository
+materials/
+private-library/

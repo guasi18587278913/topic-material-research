@@ -1,6 +1,6 @@
 ---
 name: topic-material-research
-description: 结合自媒体创作 Wiki，为已有话题、选题或现稿判断缺什么素材，执行网页和平台调研，整理保留原话、过程、细节与出处的素材包。用于“这个题该搜什么”“帮我补案例和观点”“收集整理创作素材”；支持只做调研计划或整理已有材料。默认止于素材与可用角度，不自动写稿、改锁定选题或发布。
+description: 结合内置创作方法，为已有话题、选题或现稿判断缺什么素材，执行网页和平台调研，整理保留原话、过程、细节与出处的素材包。用于“这个题该搜什么”“帮我补案例和观点”“收集整理创作素材”；支持只做调研计划或整理已有材料。默认止于素材与可用角度，不自动写稿、改锁定选题或发布。
 ---
 
 # 素材调研搭档
@@ -19,15 +19,17 @@ description: 结合自媒体创作 Wiki，为已有话题、选题或现稿判�
 
 本 Skill 不修改 Wiki，不自动写成稿，不发布、不联系采访对象。需要采访或实测但当前不能执行时，交具体提问或实验方案，标明尚未完成。
 
-用户明确禁止联网时，从一开始就使用本地完整快照，不先试 Wiki MCP、接口发现或核价。仅整理用户材料时跳过接口章节；少量材料可在一份文档中保留原始输入、编号、定位和缺口，不建空账本。
+方法默认使用本地完整快照，无需先试 Wiki MCP。用户明确禁止联网时，也不做接口发现或核价。仅整理用户材料时跳过接口章节；少量材料可在一份文档中保留原始输入、编号、定位和缺口，不建空账本。
 
-## 让 Wiki 方法决定查什么
+## 用随包方法决定查什么
 
-初次进入读 `workflows/creation_teacher`、`workflows/topic_planning`、`methods/playbook/playbook-topic-divergence`；新闻评论另读 `workflows/intelligence`。同一会话已读且未变的不重复读。用 `gbrain_sc_media.get_page`（Claude Code 里同一个库叫 `sc-media-kb`，即 `mcp__sc-media-kb__get_page`；下文其他库工具同理），不要直接读取 wiki-v2 正本文件。
+默认使用 `references/wiki-snapshots.json` 中的完整条目，通过本地 `scripts/lookup.py` 按 slug 读取；本仓库不附带作者的 Wiki 服务、账号或密钥。需要工作流入口时，本地已有 `workflows/creation_teacher`、`workflows/topic_planning`、`methods/playbook/playbook-topic-divergence`，新闻评论另有 `workflows/intelligence`。同轮读过且未变的不重复读。
 
-先看 [方法导航](references/methods.md)，按本题选择有意义的候选，再回读对应完整条目。具体写法可以用 `get_page("concepts/body_expression#22")`。需要用到结构的素材要求时，先读 `concepts/structure_quick`，再读选中的条目；这一步用于判断补料方向，不要求提前锁定脚本结构。
+用户已配置并选择自己的在线 Wiki 时，才用只读 `get_page` 核对选中方法；常见工具名是 `gbrain_sc_media`／`sc-media-kb`，不要求使用这两个特定名字。无连接时继续使用本地资料，不把接库作为调研前置任务。
 
-**导航不是方法上限。** 题目或用户问题超出导航时，用 `list_pages` 定位目录，按 `get_backlinks`/小范围 `traverse_graph` 追关联；搜索只用来定位，完整条目与必要原文才是采用依据。`search`/`query` 可能调用模型，按当前配置与授权决定。覆盖验收时逐项登记相关候选的采用、待补或不适合原因，不能拿常用几种冒充全库覆盖。
+先看 [方法导航](references/methods.md)，按本题选择有意义的候选，再回读对应完整条目。具体写法可用 `python3 scripts/lookup.py --read 'concepts/body_expression#22'`。需要用到结构的素材要求时，先在本地方法导航中定位，再读随包的选中条目；这一步用于判断补料方向，不要求提前锁定脚本结构。
+
+**导航不是所有方法的上限。** 问题超出随包范围时，先用已有材料完成可判断的部分；需要特定原文时请用户提供，或在已配置在线模式中用 `list_pages`、`get_backlinks`/小范围 `traverse_graph` 定位。只命中标题不能作为采用依据。`search`/`query` 可能调用模型，按当前配置与授权决定。覆盖验收时逐项登记相关候选的采用、待补或不适合原因，不能拿常用几种冒充全库覆盖。
 
 每个选中方法留下简短对应：**原方法与出处 → 对本题提出什么具体问题 → 改变了哪项搜集任务 → 取得什么材料或仍缺什么**。只贴方法名不算使用。观点探索、材料要求由本 Skill 迁移整理的部分标明是应用判断；库中的例子、人物、收入、流量不成为本题事实。
 
@@ -38,7 +40,7 @@ python3 scripts/lookup.py --query '原话' --limit 5
 python3 scripts/lookup.py --read 'concepts/body_expression#22'
 ```
 
-正常联网模式以 Wiki 当前返回为准。用户要求离线或 Wiki 不可用时，可用完整快照继续，说明快照日期，不冒充实时核验。方法页仍过简、例子语境影响理解或需要变体时，再读它指向的原文；不能把摘要当完整方法。
+默认用完整本地快照继续，说明快照日期，不冒充实时核验；用户主动核对在线新版时，比较差异后再采用。方法页仍过简、例子语境影响理解或需要变体时，再读它指向的原文；不能把摘要当完整方法。
 
 ## 从缺口到调研动作
 
